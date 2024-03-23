@@ -2,6 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Coffee } from '../../../shared/models/Coffee';
 import { CoffeeService } from '../../../services/coffee.service';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,13 +12,18 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   coffee: Coffee[] = [];
   constructor(private coffeeService: CoffeeService, activatedRoute:ActivatedRoute){
+    let coffeeObservable : Observable<Coffee[]>;
     activatedRoute.params.subscribe((params) => {
       if (params.searchTerm)
-      this.coffee = this.coffeeService.getAllCoffeeBySearchTerm(params.searchTerm);
+      coffeeObservable = this.coffeeService.getAllCoffeeBySearchTerm(params.searchTerm);
       else if(params.tag)
-      this.coffee = this.coffeeService.getaAllCoffeeByTag(params.tag);
+      coffeeObservable = this.coffeeService.getaAllCoffeeByTag(params.tag);
       else
-      this.coffee = coffeeService.getAll();
+      coffeeObservable = coffeeService.getAll();
+
+      coffeeObservable.subscribe((serverCoffee) => {
+        this.coffee = serverCoffee;
+      })
     })
   }
 }

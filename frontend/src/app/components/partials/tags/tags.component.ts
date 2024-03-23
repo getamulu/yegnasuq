@@ -10,6 +10,8 @@ import { Tag } from '../../../shared/models/Tag';
 export class TagsComponent {
   tags?: Tag[];
   constructor(coffeeService:CoffeeService){
-    this.tags = coffeeService.getAllTags();
+    coffeeService.getAllTags().subscribe(serverTags => {
+      this.tags = serverTags;
+    });
   }
 }

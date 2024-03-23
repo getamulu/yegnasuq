@@ -17,7 +17,9 @@ export class CoffeePageComponent {
     private cartService:CartService, private router: Router){
     activatedRoute.params.subscribe((params) => {
       if(params.id)
-      this.coffee = coffeeService.getCoffeeById(params.id);
+      coffeeService.getCoffeeById(params.id).subscribe(serverCoffee => {
+        this.coffee = serverCoffee;
+      });
     })
   }
 

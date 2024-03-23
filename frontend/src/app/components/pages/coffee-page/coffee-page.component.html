@@ -1,5 +1,9 @@
-
-<div class="container">
+<app-not-found
+  [visible]="!coffee"
+  notFoundMessage="Coffee Not Found"
+  resetLinkText="Back To Homepage">
+</app-not-found>
+<div *ngIf="coffee" class="container">
   <img [src]="coffee.imageUrl" alt="coffee.name"/>
   <div class="details">
     <div class="header">
