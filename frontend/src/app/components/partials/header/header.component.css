@@ -1,0 +1,67 @@
+header{
+  position: relative;
+  background: green;
+  padding: 0;
+  border-bottom: 5px solid greenyellow;
+}
+
+a{
+  color: white;
+}
+
+a:hover{
+  background: white;
+  color: green;
+  cursor: pointer;
+}
+
+.container{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+a.logo{
+  font-weight: bold;
+  padding: 1rem;
+}
+
+ul{
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+}
+
+ul a{
+  padding: 1rem;
+  display: inline-block;
+}
+
+a span{
+  background: white;
+  color: rgb(237, 10, 237);
+  padding: 0.1rem 0.45rem;
+  border-radius: 100rem;
+  font-size:0.9rem;
+}
+
+.menu-container{
+  position: relative;
+}
+
+.menu{
+  position:absolute;
+  z-index:1;
+  background:white;
+  display: none;
+}
+
+.menu-container:hover .menu{
+  display: block;
+  background: plum;
+}
+
+.menu a{
+  width: 100%;
+  min-width:8rem;
+}

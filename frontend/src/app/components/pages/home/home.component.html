@@ -1,0 +1,37 @@
+<app-search></app-search>
+<app-tags></app-tags>
+<app-not-found
+  [visible]="!coffee || !coffee.length"
+  resetLinkText="Reset Search">
+</app-not-found>
+<ul>
+  <li *ngFor="let coffee of coffee">
+    <a routerLink="/coffee/{{coffee.id}}">
+      <img [src]="coffee.imageUrl" [alt]="coffee.name" />
+      <div class="content">
+        <div class="name">
+          {{coffee.name}}
+        </div>
+        <span class="favorite {{coffee.favorite?'':'not'}}">
+          ❤
+        </span>
+        <div class="stars">
+          <star-rating [stars]="coffee.stars"/>
+        </div>
+        <div class="product-item-footer">
+          <div class="origins">
+            <span *ngFor="let origin of coffee.origins">
+              {{origin}}
+            </span>
+          </div>
+        </div>
+        <div class="price">
+          <span>
+            {{coffee.price | currency}}
+          </span>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
+
