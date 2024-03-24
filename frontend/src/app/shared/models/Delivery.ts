@@ -1,4 +1,4 @@
-export class User{
+export class Delivery{
   fname?:string;
   lname!:string;
   address!:string;
